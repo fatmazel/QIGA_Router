@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Sanal ortam
+venv/
+.venv/
+env/
+
+# Test & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Ortam değişkenleri (asla commit'leme)
+.env
+.env.local
+
+# Node / Frontend
+node_modules/
+frontend/dist/
+
+# Derleme / dağıtım
+*.log
+*.tmp

@@ -1,0 +1,15 @@
+# QIGA-Router — Python Bağımlılıkları
+# Kurulum: pip install -r requirements.txt
+
+# ── Hafta 1: Algoritma Çekirdeği ──────────────────────────────────────────────
+numpy>=1.26.0          # Matris işlemleri, qubit vektörleri, rastgele örnekleme
+scipy>=1.13.0          # İstatistiksel yardımcılar, mesafe matrisi (cdist)
+
+# ── Hafta 2: API Katmanı ──────────────────────────────────────────────────────
+fastapi>=0.111.0          # Async HTTP framework
+uvicorn[standard]>=0.29.0 # ASGI sunucusu
+pydantic>=2.7.0           # Request/response şema doğrulama
+httpx>=0.27.0             # Async HTTP istemcisi (API testleri için)
+
+# ── Test & Kalite ─────────────────────────────────────────────────────────────
+pytest>=8.2.0          # Birim testleri
