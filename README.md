@@ -12,7 +12,7 @@ async REST API → interactive map UI.
 
 | Map View | Convergence Chart |
 |---|---|
-| ![Route map showing optimized TSP tour on Leaflet](docs/screenshot1.png) | ![Fitness convergence chart across generations](docs/screenshot.png) |
+| ![Route map showing optimized TSP tour on Leaflet](docs/screenshot1.png) | ![Fitness convergence chart across generations](screenshot2.png) |
 
 ---
 
