@@ -1,0 +1,25 @@
+.wrapper {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.title {
+  font-size: 1.1rem;
+  color: #2d3748;
+  margin-bottom: 14px;
+  border-bottom: 2px solid #4a6fa5;
+  padding-bottom: 10px;
+}
+
+.placeholder {
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a0aec0;
+  font-size: 0.95rem;
+  border: 2px dashed #e2e8f0;
+  border-radius: 8px;
+}
