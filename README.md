@@ -223,6 +223,40 @@ POST /api/v1/optimize                # Run QIGA and return the best route
 
 ---
 
+## Benchmark — QIGA vs Classical GA
+
+`core/classic_ga.py` implements a classical GA baseline (tournament selection,
+order crossover, swap mutation) on the same TSP instances, so it can be compared
+directly against QIGA. `core/benchmark.py` runs both algorithms on identical city
+sets (same seed) across increasing problem sizes and measures best tour distance
+and wall-clock time:
+
+```bash
+python -m core.benchmark
+```
+
+| n_cities | QIGA distance | QIGA time (s) | GA distance | GA time (s) | Diff (%) |
+|---|---|---|---|---|---|
+| 10 | 363.28 | 0.0890 | 264.53 | 0.1396 | -37.33% |
+| 20 | 622.99 | 0.1260 | 440.39 | 0.1570 | -41.46% |
+| 30 | 974.73 | 0.1556 | 658.09 | 0.1891 | -48.11% |
+| 50 | 1879.25 | 0.2316 | 1221.32 | 0.2413 | -53.87% |
+
+*(`pop_size=30`, `n_generations=150`, `seed=42`. Diff (%) = how much shorter QIGA's
+tour is than GA's — negative means GA currently finds shorter tours at these
+hyperparameters.)*
+
+![QIGA vs Classical GA — distance and time across problem sizes](docs/benchmark.png)
+
+At this default hyperparameter setting (`delta=0.05` for QIGA; `mutation_rate=0.1`,
+`crossover_rate=0.8` for GA), the classical GA's order crossover explores the
+permutation space more effectively than QIGA's rotation gate, especially as
+`n_cities` grows. QIGA also runs faster at small `n_cities` but the gap narrows as
+problem size increases. Tightening QIGA's `delta` or giving it more generations is
+the natural next experiment.
+
+---
+
 ---
 
 ## Türkçe Özet
