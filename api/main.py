@@ -8,6 +8,8 @@ Swagger UI: http://127.0.0.1:8000/docs
 ReDoc     : http://127.0.0.1:8000/redoc
 """
 
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -19,10 +21,14 @@ app = FastAPI(
     version="0.2.0",
 )
 
-# Hafta 3'te frontend eklenince allow_origins kısıtlanacak
+# ALLOWED_ORIGINS env değişkeni virgülle ayrılmış origin listesi olarak verilir
+# (örn. "https://qiga-router.vercel.app,http://localhost:3000"). Tanımlı değilse
+# geliştirme ortamı için localhost'a izin verilir.
+allowed_origins = os.environ.get("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )

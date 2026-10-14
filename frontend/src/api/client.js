@@ -1,4 +1,6 @@
-const BASE = '/api/v1'
+// VITE_API_URL tanımlı değilse boş string kullanılır; bu durumda istekler
+// vite.config.js'deki dev proxy üzerinden yerel backend'e yönlenir.
+const BASE = `${import.meta.env.VITE_API_URL ?? ''}/api/v1`
 
 async function post(path, body) {
   const res = await fetch(`${BASE}${path}`, {

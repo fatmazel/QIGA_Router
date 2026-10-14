@@ -13,3 +13,5 @@ httpx>=0.27.0             # Async HTTP istemcisi (API testleri için)
 
 # ── Test & Kalite ─────────────────────────────────────────────────────────────
 pytest>=8.2.0          # Birim testleri
+
+
