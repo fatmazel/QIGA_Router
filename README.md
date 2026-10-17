@@ -1,6 +1,14 @@
 # QIGA-Router
 
-https://qiga-router.vercel.app
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
+![Tests](https://img.shields.io/badge/tests-pytest-0A9EDC?logo=pytest&logoColor=white)
+
+**Live demo:** https://qiga-router.vercel.app
+
+> The backend runs on Render's free tier, so the first request after a period of
+> inactivity can take up to a minute while the server wakes up.
 
 **Quantum-Inspired Genetic Algorithm for the Travelling Salesman Problem**
 
@@ -14,7 +22,7 @@ async REST API → interactive map UI.
 
 | Map View | Convergence Chart |
 |---|---|
-| ![Route map showing optimized TSP tour on Leaflet](docs/screenshot1.png) | ![Fitness convergence chart across generations](screenshot2.png) |
+| ![Route map showing optimized TSP tour on Leaflet](docs/screenshot1.png) | ![Fitness convergence chart across generations](docs/screenshot2.png) |
 
 ---
 
@@ -64,7 +72,9 @@ QIGA-Router/
 │   ├── chromosome.py       #   QuantumChromosome: θ vector, observe(), rotate()
 │   ├── distance.py         #   City generation, Euclidean distance matrix
 │   ├── fitness.py          #   Tour distance, population evaluator
-│   └── qiga.py             #   run_qiga() — main entry point, QIGAResult dataclass
+│   ├── qiga.py             #   run_qiga() — main entry point, QIGAResult dataclass
+│   ├── classic_ga.py       #   Classical GA baseline for comparison
+│   └── benchmark.py        #   QIGA vs classical GA benchmark
 │
 ├── api/                    # Layer 2 — REST API (FastAPI + Uvicorn)
 │   ├── main.py             #   App factory, CORS, router registration
@@ -88,6 +98,8 @@ QIGA-Router/
     ├── test_distance.py
     ├── test_fitness.py
     ├── test_qiga.py
+    ├── test_classic_ga.py
+    ├── test_benchmark.py
     └── test_api.py
 ```
 
@@ -115,8 +127,8 @@ QIGA-Router/
 
 ```bash
 # Clone and enter the project
-git clone <repo-url>
-cd QIGA-Router
+git clone https://github.com/fatmazel/QIGA_Router.git
+cd QIGA_Router
 
 # Create and activate a virtual environment
 python -m venv venv
@@ -162,8 +174,8 @@ The UI will be available at `http://localhost:5173`.
 pytest -v
 ```
 
-Expected output covers five test modules: `test_chromosome`, `test_distance`,
-`test_fitness`, `test_qiga`, `test_api`.
+Expected output covers seven test modules: `test_chromosome`, `test_distance`,
+`test_fitness`, `test_qiga`, `test_classic_ga`, `test_benchmark`, `test_api`.
 
 ---
 
@@ -219,7 +231,10 @@ POST /api/v1/optimize                # Run QIGA and return the best route
 | 1 | Algorithm core — qubit chromosome, rotation gate, TSP fitness | Done |
 | 2 | FastAPI layer — HTTP-triggered optimization, Pydantic schemas | Done |
 | 3 | React frontend — Leaflet map, Chart.js convergence chart | Done |
-| 4 | VRP extension (multi-vehicle), benchmark comparisons | Planned |
+| 4 | Benchmark against a classical GA baseline | Done |
+| 5 | Deployment — Render (API) + Vercel (frontend) | Done |
+| 6 | Hyperparameter tuning to close the gap with classical GA | Planned |
+| 7 | VRP extension (multi-vehicle routing) | Planned |
 
 ---
 
@@ -257,8 +272,6 @@ the natural next experiment.
 
 ---
 
----
-
 ## Türkçe Özet
 
 **QIGA-Router**, Gezgin Satıcı Problemi'ni (TSP) Kuantum-Esinli Evrimsel Algoritma
@@ -292,3 +305,5 @@ cd frontend && npm install && npm run dev
 ```
 
 **Testler:** `pytest -v`
+
+**Canlı demo:** https://qiga-router.vercel.app
